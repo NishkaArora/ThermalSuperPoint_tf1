@@ -388,6 +388,8 @@ class BaseModel(metaclass=ABCMeta):
         return metrics
 
     def load(self, checkpoint_path):
+        #checkpoint_path = osp.join(checkpoint_path, 'checkpoint')
+        print(checkpoint_path)
         with tf.device('/cpu:0'):
             saver = tf.train.Saver(save_relative_paths=True)
         if tf.gfile.IsDirectory(checkpoint_path):
