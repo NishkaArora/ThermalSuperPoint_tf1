@@ -38,7 +38,7 @@ class Coco(BaseDataset):
     }
 
     def _init_dataset(self, **config):
-        base_path = Path(DATA_PATH, 'COCO/train2014/')
+        base_path = Path(DATA_PATH, 'cocostuff_water/images')
         image_paths = list(base_path.iterdir())
         if config['truncate']:
             image_paths = image_paths[:config['truncate']]
@@ -96,7 +96,7 @@ class Coco(BaseDataset):
 
         # Keep only the first elements for validation
         if split_name == 'validation':
-            data = data.take(config['validation_size'])
+            data = data.take(int(config['validation_size']))
 
         # Cache to avoid always reading from disk
         if config['cache_in_memory']:
